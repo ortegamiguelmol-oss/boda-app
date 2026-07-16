@@ -40,24 +40,24 @@ export default function MenuBoda() {
         >
 
           <a
-            href="#ruta"
+            href="/Ruta"
             className="block py-2 text-black hover:text-pink-600"
           >
             📍 Ruta
           </a>
 
           <a
-            href="#timeline"
+            href="/Timeline"
             className="block py-2 text-black hover:text-pink-600"
           >
             🕒 Timeline
           </a>
 
           <a
-            href="#regalos"
+            href="/Otros"
             className="block py-2 text-black hover:text-pink-600"
           >
-            🎁 Regalo
+            ∀😉 Otros
           </a>
 
         </div>
