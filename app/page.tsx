@@ -1,19 +1,21 @@
 import Link from "next/link";
 import Countdown from "../components/countdown";
+import MenuBoda from "../components/MenuBoda";
 
 export default function Home() {
   return (
     <div
+    
       className="min-h-screen flex items-center justify-center px-6 relative bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: "url('/cascada.jpg')",
         backgroundPosition: "center",
       }}
     >
+      <MenuBoda />
 
       {/* Capa oscura para que se vea mejor el texto */}
       <div className="absolute inset-0 bg-black/30"></div>
-
 
       {/* Tarjeta */}
       <main
@@ -27,16 +29,15 @@ export default function Home() {
 
        <h1
           className="
-          text-5xl
+          text-3xl
           font-serif
           font-bold
-          text-yellow-200
+          text-yellow-100
           drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]
           "
         >
-          💍 Nuestra Boda
+          Tenemos el placer de invitaros a nuestra boda
         </h1>
-
 
          <p
           className="
@@ -50,11 +51,10 @@ export default function Home() {
         >
           Carmen ❤️ Miguel
         </p>
-
-
+      <div className="mt-20">
        <p
           className="
-          mt-3
+          mt-20
           text-xl
           font-medium
           text-yellow-100
@@ -63,7 +63,6 @@ export default function Home() {
         >
           27 de Febrero de 2027
         </p>
-
 
        <p
           className="
@@ -80,11 +79,10 @@ export default function Home() {
         <Countdown />
         
 
-
-        <a
+        <div className="mt-10">
+       <a
           href="https://forms.gle/mFK1jET7mfjnDPPF9"
           className="
-          mt-8
           px-10
           py-3
           rounded-full
@@ -95,11 +93,11 @@ export default function Home() {
           hover:bg-pink-700
           transition
           "
-        >
-          Confirmar asistencia
+            >
+     Confirmar asistencia
         </a>
-
-
+</div>
+      </div>
       </main>
 
     </div>
