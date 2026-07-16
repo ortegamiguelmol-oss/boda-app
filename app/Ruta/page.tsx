@@ -41,7 +41,7 @@ export default function Ruta() {
       {/* 1. IMAGEN DEL MAPA */}
       <div className="max-w-5xl mx-auto mb-12 flex justify-center">
         <img
-          src="/Mapa.jpg"
+          src="/Mapa.JPG"
           alt="Mapa de la ruta de la boda"
           className="w-full max-w-5xl rounded-3xl shadow-xl h-auto"
         />
