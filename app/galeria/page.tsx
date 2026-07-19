@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-
 const CLAVE_CORRECTA = "CARMENMIGUEL2027";
-
 
 export default function Galeria() {
 
@@ -16,14 +14,26 @@ export default function Galeria() {
   const [subiendo, setSubiendo] = useState(false);
 
 
-
   async function cargarFotos() {
 
-    const respuesta = await fetch("/api/galeria");
+    try {
 
-    const datos = await respuesta.json();
+      const respuesta = await fetch("/api/galeria");
 
-    setFotos(datos);
+      if (!respuesta.ok) {
+        console.log("Error cargando fotos");
+        return;
+      }
+
+      const datos = await respuesta.json();
+
+      setFotos(datos);
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
 
   }
 
@@ -31,11 +41,17 @@ export default function Galeria() {
 
   useEffect(() => {
 
-    const guardada = localStorage.getItem("accesoGaleria");
+    const guardada = localStorage.getItem(
+      "accesoGaleria"
+    );
+
 
     if (guardada === "true") {
+
       setAcceso(true);
+
       cargarFotos();
+
     }
 
   }, []);
@@ -52,9 +68,11 @@ export default function Galeria() {
         "true"
       );
 
+
       setAcceso(true);
 
       cargarFotos();
+
 
     } else {
 
@@ -85,19 +103,37 @@ export default function Galeria() {
 
 
 
-    await fetch(
-      "/api/galeria",
-      {
-        method: "POST",
-        body: datos
+    try {
+
+      const respuesta = await fetch(
+        "/api/galeria",
+        {
+          method: "POST",
+          body: datos
+        }
+      );
+
+
+      if (respuesta.ok) {
+
+        setArchivo(null);
+
+        setTimeout(() => {
+        cargarFotos();
+        }, 500);
+
+      } else {
+
+        alert("Error subiendo la foto");
+
       }
-    );
 
 
+    } catch (error) {
 
-    setArchivo(null);
+      alert("Error de conexión");
 
-    await cargarFotos();
+    }
 
 
     setSubiendo(false);
@@ -112,41 +148,43 @@ export default function Galeria() {
 
     return (
 
-      <main className="
-      min-h-screen
-      bg-[#faf6f1]
-      flex
-      items-center
-      justify-center
-      px-6
-      ">
+      <main
+        className="
+        min-h-screen
+        bg-[#faf6f1]
+        flex
+        items-center
+        justify-center
+        px-6
+        "
+      >
 
+        <div
+          className="
+          bg-white
+          rounded-3xl
+          shadow-xl
+          p-10
+          max-w-md
+          text-center
+          "
+        >
 
-        <div className="
-        bg-white
-        rounded-3xl
-        shadow-xl
-        p-10
-        max-w-md
-        text-center
-        ">
-
-
-          <h1 className="
-          text-4xl
-          font-serif
-          text-gray-800
-          ">
+          <h1
+            className="
+            text-4xl
+            font-serif
+            text-gray-800
+            "
+          >
             📸 Galería de boda
           </h1>
 
 
-          <p className="
-          mt-6
-          text-gray-600
-          ">
+          <p className="mt-6 text-gray-600">
             Introduce la clave de invitados
           </p>
+
 
 
           <input
@@ -197,7 +235,6 @@ export default function Galeria() {
           </button>
 
 
-
         </div>
 
 
@@ -213,45 +250,53 @@ export default function Galeria() {
 
   return (
 
-    <main className="
-    min-h-screen
-    bg-[#faf6f1]
-    px-6
-    py-10
-    ">
+    <main
+      className="
+      min-h-screen
+      bg-[#faf6f1]
+      px-6
+      py-10
+      "
+    >
 
 
-
-      <h1 className="
-      text-5xl
-      text-center
-      font-serif
-      text-gray-800
-      mb-10
-      ">
+      <h1
+        className="
+        text-5xl
+        text-center
+        font-serif
+        text-gray-800
+        mb-10
+        "
+      >
         📸 Galería de la boda
       </h1>
 
 
 
 
-      <div className="
-      max-w-xl
-      mx-auto
-      bg-white
-      rounded-3xl
-      shadow-lg
-      p-8
-      text-center
-      ">
-
+      <div
+        className="
+        max-w-xl
+        mx-auto
+        bg-white
+        rounded-3xl
+        shadow-lg
+        p-8
+        text-center
+        "
+      >
 
 
         <input
 
+          id="selectorFoto"
+
           type="file"
 
           accept="image/*"
+
+          hidden
 
           onChange={(e)=>
             setArchivo(
@@ -263,27 +308,72 @@ export default function Galeria() {
 
 
 
-        <button
+        <label
 
-          onClick={subirFoto}
+          htmlFor="selectorFoto"
 
           className="
-          mt-6
-          bg-pink-600
+          cursor-pointer
+          bg-gray-800
           text-white
           px-10
           py-3
           rounded-full
           shadow-lg
-          hover:bg-pink-700
+          inline-block
           "
+
+        >
+
+          Buscar foto
+
+        </label>
+
+
+
+
+        {
+          archivo &&
+
+          <p className="mt-5 text-gray-600">
+
+            {archivo.name}
+
+          </p>
+
+        }
+
+
+
+
+
+        <button
+
+          disabled={!archivo || subiendo}
+
+          onClick={subirFoto}
+
+          className={`
+          mt-6
+          px-10
+          py-3
+          rounded-full
+          shadow-lg
+          ${
+            archivo
+            ?
+            "bg-pink-600 text-white hover:bg-pink-700"
+            :
+            "bg-gray-300 text-gray-500 cursor-not-allowed"
+          }
+          `}
 
         >
 
           {
             subiendo
             ?
-            "Subiendo..."
+            "Subiendo foto..."
             :
             "Subir foto"
           }
@@ -297,14 +387,16 @@ export default function Galeria() {
 
 
 
-      <div className="
-      mt-12
-      grid
-      grid-cols-2
-      md:grid-cols-4
-      gap-5
-      ">
 
+      <div
+        className="
+        mt-12
+        grid
+        grid-cols-2
+        md:grid-cols-4
+        gap-5
+        "
+      >
 
         {
           fotos.map((foto)=>(
@@ -336,11 +428,7 @@ export default function Galeria() {
 
 
 
-      <div className="
-      flex
-      justify-center
-      mt-12
-      ">
+      <div className="flex justify-center mt-12">
 
 
         <a
