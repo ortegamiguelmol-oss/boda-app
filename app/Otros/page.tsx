@@ -4,14 +4,14 @@ export default function Otros() {
     <main className="min-h-screen bg-[#faf6f1] px-6 py-10">
 
       <h1 className="text-5xl text-center font-serif text-gray-800 mb-10">
-        🎵 Otros
+        ∀😉 Otros
       </h1>
 
 
       <div className="max-w-3xl mx-auto bg-white rounded-3xl shadow-lg p-8">
 
         <h2 className="text-3xl font-serif text-gray-800 text-center">
-          Sugerencias de música
+          Sugerencias de música 🎵
         </h2>
 
         <p className="text-gray-600 text-center mt-4">

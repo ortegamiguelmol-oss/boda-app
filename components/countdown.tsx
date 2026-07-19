@@ -26,7 +26,9 @@ export default function Countdown() {
     };
   };
 
+
   const [tiempo, setTiempo] = useState(calcularTiempo());
+
 
   useEffect(() => {
     const intervalo = setInterval(() => {
@@ -36,27 +38,91 @@ export default function Countdown() {
     return () => clearInterval(intervalo);
   }, []);
 
+
+
   return (
-    <div className="flex gap-6 justify-center mt-8 text-black">
-      <div className="bg-white/80 rounded-xl p-4 shadow-lg">
-        <p className="text-4xl font-bold">{tiempo.dias}</p>
-        <p>Días</p>
+    <div className="
+      flex
+      gap-2
+      sm:gap-4
+      justify-center
+      mt-8
+      text-black
+      w-full
+    ">
+
+      <div className="
+        bg-white/80
+        rounded-xl
+        p-2
+        sm:p-4
+        shadow-lg
+        min-w-[65px]
+        sm:min-w-[85px]
+      ">
+        <p className="text-2xl sm:text-4xl font-bold">
+          {tiempo.dias}
+        </p>
+        <p className="text-sm sm:text-base">
+          Días
+        </p>
       </div>
 
-      <div className="bg-white/80 rounded-xl p-4 shadow-lg">
-        <p className="text-4xl font-bold">{tiempo.horas}</p>
-        <p>Horas</p>
+
+      <div className="
+        bg-white/80
+        rounded-xl
+        p-2
+        sm:p-4
+        shadow-lg
+        min-w-[65px]
+        sm:min-w-[85px]
+      ">
+        <p className="text-2xl sm:text-4xl font-bold">
+          {tiempo.horas}
+        </p>
+        <p className="text-sm sm:text-base">
+          Horas
+        </p>
       </div>
 
-      <div className="bg-white/80 rounded-xl p-4 shadow-lg">
-        <p className="text-4xl font-bold">{tiempo.minutos}</p>
-        <p>Minutos</p>
+
+      <div className="
+        bg-white/80
+        rounded-xl
+        p-2
+        sm:p-4
+        shadow-lg
+        min-w-[65px]
+        sm:min-w-[85px]
+      ">
+        <p className="text-2xl sm:text-4xl font-bold">
+          {tiempo.minutos}
+        </p>
+        <p className="text-sm sm:text-base">
+          Minutos
+        </p>
       </div>
 
-      <div className="bg-white/80 rounded-xl p-4 shadow-lg">
-        <p className="text-4xl font-bold">{tiempo.segundos}</p>
-        <p>Segundos</p>
+
+      <div className="
+        bg-white/80
+        rounded-xl
+        p-2
+        sm:p-4
+        shadow-lg
+        min-w-[65px]
+        sm:min-w-[85px]
+      ">
+        <p className="text-2xl sm:text-4xl font-bold">
+          {tiempo.segundos}
+        </p>
+        <p className="text-sm sm:text-base">
+          Segundos
+        </p>
       </div>
+
+
     </div>
   );
 }

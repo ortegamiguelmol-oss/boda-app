@@ -81,7 +81,9 @@ export default function Home() {
 
         <div className="mt-10">
        <a
-          href="https://forms.gle/mFK1jET7mfjnDPPF9"
+        href="https://forms.gle/mFK1jET7mfjnDPPF9"
+        target="_blank"
+        rel="noopener noreferrer"
           className="
           px-10
           py-3
@@ -90,9 +92,12 @@ export default function Home() {
           text-white
           font-medium
           shadow-lg
+          transition-all
+          duration-300
           hover:bg-pink-700
-          transition
-          "
+          hover:scale-105
+          hover:shadow-2xl
+        "
             >
      Confirmar asistencia
         </a>

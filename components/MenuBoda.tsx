@@ -54,11 +54,18 @@ export default function MenuBoda() {
           </a>
 
           <a
+            href="/galeria"
+            className="block py-2 text-black hover:text-pink-600"
+          >
+            📸 Galería
+          </a>
+          
+          <a
             href="/Otros"
             className="block py-2 text-black hover:text-pink-600"
           >
             ∀😉 Otros
-          </a>
+          </a> 
 
         </div>
       )}
