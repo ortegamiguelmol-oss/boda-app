@@ -105,13 +105,23 @@ export default function Galeria() {
 
     try {
 
-      const respuesta = await fetch(
+       const respuesta = await fetch(
         "/api/galeria",
         {
-          method: "POST",
-          body: datos
+        method: "POST",
+         body: datos
         }
       );
+
+      const resultado = await respuesta.json();
+
+      console.log("Respuesta subida:", resultado);
+
+      if (!respuesta.ok) {
+        alert(resultado.error || "Error subiendo la foto");
+       setSubiendo(false);
+       return;
+      }
 
 
       if (respuesta.ok) {
